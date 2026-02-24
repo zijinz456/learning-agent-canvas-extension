@@ -1,0 +1,30 @@
+# Python
+backend/venv/
+backend/.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+
+# Environment
+backend/.env
+.env
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Database
+*.db
+*.sqlite3
+
+# Logs
+*.log
+
+# Local export data
+learning-agent-files/

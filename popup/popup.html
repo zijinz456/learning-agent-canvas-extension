@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learning Agent</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div id="app">
+    <!-- Loading state -->
+    <div id="loading" class="screen">
+      <div class="spinner"></div>
+      <p>Loading...</p>
+    </div>
+
+    <!-- Onboarding: Course Selector -->
+    <div id="onboarding" class="screen hidden">
+      <div class="header-bar">
+        <div class="header-title">
+          <span class="logo">LA</span>
+          <div>
+            <h1>Learning Agent</h1>
+            <p class="subtitle">Select courses to sync</p>
+          </div>
+        </div>
+      </div>
+      <div id="no-canvas-warning" class="card card-warning hidden">
+        <p id="warning-text">Open your school's Canvas in any browser tab and log in, then click Retry.</p>
+        <button id="btn-retry" class="btn btn-primary btn-sm" style="margin-top:8px">Retry</button>
+      </div>
+      <div id="course-list" class="course-list"></div>
+      <div class="actions">
+        <button id="btn-save-courses" class="btn btn-primary" disabled>
+          Start Syncing
+        </button>
+      </div>
+    </div>
+
+    <!-- Dashboard -->
+    <div id="dashboard" class="screen hidden">
+      <div class="header-bar">
+        <div class="header-title">
+          <span class="logo">LA</span>
+          <h1>Learning Agent</h1>
+        </div>
+        <div class="sync-info">
+          <span id="sync-status" class="status-dot"></span>
+          <span id="sync-time">Never synced</span>
+        </div>
+      </div>
+
+      <div class="stats-row">
+        <div class="stat stat-blue">
+          <span class="stat-value" id="stat-courses">-</span>
+          <span class="stat-label">Courses</span>
+        </div>
+        <div class="stat stat-purple">
+          <span class="stat-value" id="stat-assignments">-</span>
+          <span class="stat-label">Assignments</span>
+        </div>
+        <div class="stat stat-green">
+          <span class="stat-value" id="stat-files">-</span>
+          <span class="stat-label">Files</span>
+        </div>
+        <div class="stat stat-orange">
+          <span class="stat-value" id="stat-pages">-</span>
+          <span class="stat-label">Pages</span>
+        </div>
+        <div class="stat stat-red">
+          <span class="stat-value" id="stat-links">-</span>
+          <span class="stat-label">Links</span>
+        </div>
+      </div>
+
+      <!-- Semester Week Banner -->
+      <div id="week-banner" class="week-banner hidden">
+        <div class="week-number">
+          <span id="week-num">-</span>
+          <span class="week-label">WEEK</span>
+        </div>
+        <div class="week-details">
+          <span id="week-term-name" class="week-term"></span>
+          <span id="week-date-range" class="week-dates"></span>
+        </div>
+        <div class="week-progress">
+          <div id="week-progress-bar" class="week-progress-fill"></div>
+        </div>
+      </div>
+
+      <!-- Upcoming assignments timeline -->
+      <div class="section">
+        <div class="section-header">
+          <h2>Upcoming</h2>
+          <div class="view-toggle">
+            <button id="btn-view-timeline" class="toggle-btn active">Timeline</button>
+            <button id="btn-view-weekly" class="toggle-btn">By Week</button>
+          </div>
+        </div>
+        <div id="timeline" class="timeline"></div>
+        <div id="weekly-view" class="weekly-view hidden"></div>
+      </div>
+
+      <div class="actions">
+        <button id="btn-sync" class="btn btn-primary">Sync Now</button>
+        <button id="btn-settings" class="btn btn-secondary">Settings</button>
+      </div>
+
+      <div id="backend-status" class="backend-status">
+        <span id="backend-dot" class="status-dot offline"></span>
+        <span id="backend-text">Backend: checking...</span>
+      </div>
+    </div>
+
+    <!-- Settings -->
+    <div id="settings" class="screen hidden">
+      <div class="header-bar">
+        <button id="btn-back" class="btn-icon">&larr;</button>
+        <h1>Settings</h1>
+      </div>
+
+      <div class="card">
+        <h2>Selected Courses</h2>
+        <div id="settings-course-list" class="course-list compact"></div>
+        <button id="btn-change-courses" class="btn btn-secondary btn-sm">Change Courses</button>
+      </div>
+
+      <div class="card">
+        <h2>Semester</h2>
+        <p class="field-label">Teaching start date (auto-detected, or set manually):</p>
+        <div class="inline-actions">
+          <input id="teaching-start-input" class="text-input" type="date">
+          <button id="btn-save-teaching-start" class="btn btn-secondary btn-sm">Save</button>
+          <button id="btn-reset-teaching-start" class="btn btn-secondary btn-sm">Auto</button>
+        </div>
+        <p id="teaching-start-status" class="field-hint">Auto-detecting from assignments</p>
+      </div>
+
+      <div class="card">
+        <h2>Canvas</h2>
+        <p id="canvas-url" class="mono">Not detected</p>
+      </div>
+
+      <div class="card">
+        <h2>Backend</h2>
+        <div class="inline-actions">
+          <input id="backend-url-input" class="text-input" type="url" placeholder="http://localhost:8000">
+          <button id="btn-save-backend-url" class="btn btn-secondary btn-sm">Save</button>
+        </div>
+        <p id="backend-url-status" class="field-hint">Default: http://localhost:8000</p>
+        <details class="advanced-settings">
+          <summary>API key (optional)</summary>
+          <div class="inline-actions">
+            <input id="backend-api-key" class="text-input" type="password" placeholder="Leave empty for local use">
+            <button id="btn-save-backend-key" class="btn btn-secondary btn-sm">Save</button>
+          </div>
+          <p id="backend-key-status" class="field-hint">Not set</p>
+        </details>
+      </div>
+
+      <div class="card">
+        <h2>Auto Sync</h2>
+        <label class="switch-line">
+          <input id="auto-sync-enabled" type="checkbox" checked>
+          <span>Enable scheduled sync</span>
+        </label>
+        <div class="inline-actions">
+          <select id="auto-sync-interval" class="text-input">
+            <option value="15">Every 15 min</option>
+            <option value="30">Every 30 min</option>
+            <option value="60">Every 60 min</option>
+            <option value="120">Every 120 min</option>
+          </select>
+          <button id="btn-save-auto-sync" class="btn btn-secondary btn-sm">Apply</button>
+        </div>
+        <label class="switch-line">
+          <input id="auto-open-canvas-tab" type="checkbox">
+          <span>Auto-open Canvas tab for background sync</span>
+        </label>
+        <p id="auto-sync-status" class="field-hint">Auto sync not loaded</p>
+        <p id="auto-sync-last-result" class="field-hint">Last auto sync: never</p>
+      </div>
+
+      <div class="card">
+        <h2>File Downloads</h2>
+        <label class="switch-line">
+          <input id="auto-download-files" type="checkbox" checked>
+          <span>Auto-download course files (PDF, PPT, etc.)</span>
+        </label>
+        <p id="download-status" class="field-hint">~/Downloads/LearningAgent/</p>
+      </div>
+
+      <div class="card">
+        <h2>Local Export</h2>
+        <p class="mono">~/learning-agent-files</p>
+        <p id="export-status" class="field-hint">Not exported yet</p>
+        <button id="btn-export" class="btn btn-secondary btn-sm" style="margin-top:6px">Export Data</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
