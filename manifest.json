@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "Learning Agent - Canvas Sync",
-  "version": "0.1.0",
-  "description": "Auto-sync Canvas LMS data to your local learning agent backend.",
+  "version": "1.0.0",
+  "description": "Sync your Canvas LMS courses, assignments, grades, and files to a local backend — powering AI-ready study tools.",
   "permissions": [
     "storage",
     "tabs",
