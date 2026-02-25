@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Learning Agent - Canvas Sync</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.7;
+            color: #1a1a1a;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 24px 80px;
+            background-color: #fafafa;
+        }
+        h1 {
+            font-size: 2em;
+            margin-bottom: 4px;
+            color: #111;
+        }
+        h2 {
+            font-size: 1.3em;
+            margin-top: 2em;
+            margin-bottom: 0.5em;
+            color: #222;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 6px;
+        }
+        p, li {
+            color: #333;
+            font-size: 0.98em;
+        }
+        ul {
+            padding-left: 1.5em;
+        }
+        li {
+            margin-bottom: 6px;
+        }
+        .subtitle {
+            color: #666;
+            font-size: 0.95em;
+            margin-bottom: 0.2em;
+        }
+        .effective-date {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 2em;
+        }
+        a {
+            color: #1a73e8;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .highlight {
+            background-color: #e8f5e9;
+            border-left: 4px solid #43a047;
+            padding: 12px 16px;
+            margin: 1.5em 0;
+            border-radius: 2px;
+        }
+        .highlight p {
+            margin: 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1em 0;
+        }
+        th, td {
+            text-align: left;
+            padding: 10px 14px;
+            border: 1px solid #ddd;
+            font-size: 0.95em;
+        }
+        th {
+            background-color: #f0f0f0;
+            font-weight: 600;
+        }
+        td:first-child {
+            white-space: nowrap;
+            font-family: "SF Mono", "Fira Code", "Fira Mono", Menlo, Consolas, monospace;
+            font-size: 0.88em;
+        }
+        footer {
+            margin-top: 3em;
+            padding-top: 1.5em;
+            border-top: 1px solid #ddd;
+            color: #888;
+            font-size: 0.85em;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Privacy Policy</h1>
+    <p class="subtitle"><strong>Learning Agent - Canvas Sync</strong> &mdash; Chrome Extension</p>
+    <p class="effective-date"><strong>Effective Date:</strong> February 25, 2026</p>
+
+    <div class="highlight">
+        <p><strong>Summary:</strong> This extension processes your Canvas LMS data entirely on your local machine. No data is collected by the developer, sent to third-party services, or stored on any external server.</p>
+    </div>
+
+    <h2>1. Introduction</h2>
+    <p>
+        Learning Agent - Canvas Sync (the "Extension") is developed by zijinz456 (the "Developer"). This privacy policy explains how the Extension handles your data. We are committed to transparency and to protecting your privacy.
+    </p>
+    <p>
+        This Extension is designed to help students and educators sync their Canvas LMS course data to a local backend for personal use. It operates entirely within the user's own computing environment.
+    </p>
+
+    <h2>2. Data We Access</h2>
+    <p>
+        The Extension reads the following types of data from your institution's Canvas LMS, using your existing authenticated session (browser cookies):
+    </p>
+    <ul>
+        <li><strong>Course information</strong> &mdash; course names, IDs, and enrollment data</li>
+        <li><strong>Assignments</strong> &mdash; assignment details, due dates, and descriptions</li>
+        <li><strong>Grades</strong> &mdash; your grade and score information</li>
+        <li><strong>Files</strong> &mdash; course files such as PDFs, documents, and other materials</li>
+        <li><strong>Announcements</strong> &mdash; course announcements posted by instructors</li>
+        <li><strong>Pages</strong> &mdash; Canvas wiki pages and content pages</li>
+        <li><strong>Discussions</strong> &mdash; discussion board topics and entries</li>
+        <li><strong>Modules</strong> &mdash; module structure and module items</li>
+    </ul>
+    <p>
+        The Extension accesses this data only when you initiate a sync operation or when a scheduled sync runs that you have configured.
+    </p>
+
+    <h2>3. How Your Data Is Used</h2>
+    <p>
+        All data retrieved from Canvas LMS is used for a single purpose: <strong>syncing it to a local backend server running on your own machine</strong> (by default, <code>localhost:8000</code>). Specifically:
+    </p>
+    <ul>
+        <li>Course metadata and content are sent to your locally-running backend for processing and storage.</li>
+        <li>Course files (PDFs, documents, etc.) are downloaded directly to your local Downloads folder.</li>
+        <li>No data is used for advertising, profiling, analytics, or any purpose other than the sync functionality you control.</li>
+    </ul>
+
+    <h2>4. Data Storage</h2>
+    <p>The Extension stores a minimal set of settings locally in your browser using <code>chrome.storage.local</code>:</p>
+    <ul>
+        <li><strong>Selected course IDs</strong> &mdash; which courses you have chosen to sync</li>
+        <li><strong>Sync preferences</strong> &mdash; your configuration for sync behavior (e.g., scheduled intervals)</li>
+        <li><strong>Canvas domain</strong> &mdash; the URL of your institution's Canvas instance</li>
+    </ul>
+    <p>
+        This data never leaves your browser. It is not transmitted to the Developer or any external service. All Canvas content data is sent exclusively to your user-configured local backend and is stored only on your own machine.
+    </p>
+
+    <h2>5. Data We Do NOT Collect</h2>
+    <p>To be explicit, the Extension does <strong>not</strong>:</p>
+    <ul>
+        <li>Send any data to the Developer's servers or any third-party cloud service</li>
+        <li>Include any analytics, telemetry, or usage-tracking code</li>
+        <li>Require user accounts, registration, or sign-in of any kind</li>
+        <li>Store or transmit your Canvas credentials or session tokens</li>
+        <li>Collect personal information such as your name, email address, or IP address</li>
+        <li>Use cookies of its own or any tracking technologies</li>
+    </ul>
+
+    <h2>6. Third-Party Sharing</h2>
+    <p>
+        <strong>None.</strong> Your data is never shared with, sold to, or disclosed to any third party. All data flows directly from Canvas LMS to your local machine. The Developer has no access to your data at any point.
+    </p>
+
+    <h2>7. Permissions Explained</h2>
+    <p>The Extension requests the following browser permissions, each for a specific and limited purpose:</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Permission</th>
+                <th>Why It Is Needed</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>https://*/*</td>
+                <td>Canvas LMS is hosted on different domains per institution (e.g., <code>canvas.university.edu</code>, <code>lms.college.org</code>). This broad host permission allows the Extension to work with any institution's Canvas instance without requiring a hard-coded list of domains.</td>
+            </tr>
+            <tr>
+                <td>storage</td>
+                <td>Used to save your extension settings (selected courses, sync preferences, Canvas domain) locally in the browser via <code>chrome.storage.local</code>.</td>
+            </tr>
+            <tr>
+                <td>tabs</td>
+                <td>Used to detect when you have a Canvas LMS tab open, enabling the Extension to identify your Canvas domain and provide contextual functionality.</td>
+            </tr>
+            <tr>
+                <td>alarms</td>
+                <td>Used to schedule periodic sync operations at intervals you configure, so your local data stays up to date.</td>
+            </tr>
+            <tr>
+                <td>notifications</td>
+                <td>Used to display browser notifications about sync status (e.g., sync completed, sync errors) so you are informed of background activity.</td>
+            </tr>
+            <tr>
+                <td>downloads</td>
+                <td>Used to download course files (PDFs, documents, etc.) directly to your local Downloads folder.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>8. Data Security</h2>
+    <p>
+        Because all data processing happens locally on your machine, your data security is governed by the security of your own computer and local network. The Extension:
+    </p>
+    <ul>
+        <li>Communicates with Canvas LMS over HTTPS, inheriting your institution's existing security.</li>
+        <li>Sends data only to your locally-configured backend server (default: <code>localhost:8000</code>), which does not traverse the public internet.</li>
+        <li>Does not store sensitive data such as passwords or authentication tokens.</li>
+        <li>Relies on your existing Canvas session authentication &mdash; it does not independently manage credentials.</li>
+    </ul>
+    <p>
+        We recommend keeping your browser and operating system up to date and ensuring your local backend is configured securely.
+    </p>
+
+    <h2>9. Your Rights and Control</h2>
+    <p>You have full control over your data at all times:</p>
+    <ul>
+        <li><strong>Selective sync</strong> &mdash; You choose exactly which courses to sync.</li>
+        <li><strong>Pause or stop</strong> &mdash; You can disable scheduled syncs or stop syncing at any time.</li>
+        <li><strong>Delete stored settings</strong> &mdash; Uninstalling the Extension automatically removes all data stored in <code>chrome.storage.local</code>.</li>
+        <li><strong>Delete synced data</strong> &mdash; Data synced to your local backend is stored on your machine and can be deleted by you at any time.</li>
+        <li><strong>Revoke permissions</strong> &mdash; You can revoke the Extension's permissions or uninstall it at any time through your browser's extension settings.</li>
+    </ul>
+
+    <h2>10. Children's Privacy</h2>
+    <p>
+        The Extension does not knowingly collect any personal information. It is intended for use by students and educators who have existing Canvas LMS accounts provided by their educational institutions. Because no data is collected by the Developer, no special provisions for children's data are applicable.
+    </p>
+
+    <h2>11. Changes to This Policy</h2>
+    <p>
+        If this privacy policy is updated, the revised version will be posted in the Extension's GitHub repository and the Chrome Web Store listing. The effective date at the top of this page will be updated accordingly. We encourage you to review this policy periodically.
+    </p>
+
+    <h2>12. Open Source</h2>
+    <p>
+        The Extension's source code is publicly available on GitHub. You are welcome to review the code to verify the data-handling practices described in this policy.
+    </p>
+
+    <h2>13. Contact</h2>
+    <p>
+        If you have any questions, concerns, or feedback about this privacy policy or the Extension's data practices, please open an issue on our GitHub repository:
+    </p>
+    <p>
+        <a href="https://github.com/zijinz456/learning-agent-canvas-extension/issues">https://github.com/zijinz456/learning-agent-canvas-extension/issues</a>
+    </p>
+
+    <footer>
+        <p>&copy; 2026 zijinz456. Learning Agent - Canvas Sync.</p>
+        <p>This privacy policy was last updated on February 25, 2026.</p>
+    </footer>
+
+</body>
+</html>
